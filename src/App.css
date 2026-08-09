@@ -1,0 +1,2100 @@
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.onboard1 {
+    width: 100vw;
+    height: 100vh;
+    background: #363062;
+    position: relative;
+}
+
+.logo1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo1 img {
+    width: 150px;
+}
+
+
+
+
+
+
+
+.phone1 {
+
+    background: #E5E7EB;
+    position: relative;
+    overflow: hidden;
+
+
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.barber {
+    width: 100%;
+    height: 579px;
+    object-fit: cover;
+}
+
+.bottom3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 353px;
+    height: 32vh;
+    background: #F99417;
+    border-radius: 28px 28px 0 0;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text {
+    width: 100%;
+}
+
+.text h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.text p {
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+
+.button1 {
+    width: 339px;
+    height: 54px;
+    border: none;
+    border-radius: 8px;
+    background: #363062;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.home3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+.loginPage {
+    width: 100vw;
+    height: 100vh;
+    background: #E5E7EB;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.loginImg {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+
+.containerLogin {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    border-radius: 28px 28px 0 0;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.titleBox h1 {
+    color: #363062;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.titleBox p {
+    color: #6B7280;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputBox label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 0 14px;
+    outline: none;
+    font-size: 14px;
+}
+
+.forgot {
+    text-align: right;
+    color: #363062;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.loginBtn {
+    width: 100%;
+    height: 54px;
+    border: none;
+    border-radius: 8px;
+    background: #363062;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register {
+    text-align: center;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.register span {
+    color: #363062;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.homeIndicator {
+    display: flex;
+    justify-content: center;
+}
+
+.homeLine {
+    width: 100px;
+    height: 5px;
+    background: #E0E0E0;
+    border-radius: 50px;
+}
+
+
+/*аним*/
+.fade1 {
+    animation: up .35s ease;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.homePage {
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: white;
+
+    padding: 5px;
+
+    box-sizing: border-box;
+
+    overflow: auto;
+
+}
+
+.header21 {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+    background-color: #e5e5e5;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+
+.leftHeader {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.location {
+
+    color: #6B7280;
+
+    font-size: 14px;
+
+}
+
+.leftHeader h2 {
+
+    font-size: 20px;
+
+    color: #111827;
+
+}
+
+.profile {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+}
+
+.searchRow {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+.searchRow input {
+
+    flex: 1;
+
+    height: 45px;
+
+    border: none;
+
+    background: #EBF0F5;
+
+    border-radius: 8px;
+
+    padding-left: 15px;
+
+    font-size: 14px;
+
+}
+
+.searchRow button {
+
+    width: 45px;
+
+    border: none;
+
+    background: #363062;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.mainCard {
+
+    margin-top: 25px;
+
+    position: relative;
+
+}
+
+.mainCard img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+}
+
+.bookingBtn {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 0;
+
+    width: 130px;
+
+    height: 42px;
+
+    background: #363062;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px 0 8px 0;
+
+    cursor: pointer;
+
+}
+
+.cardInfo {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+.cardInfo h3 {
+
+    font-size: 17px;
+
+}
+
+.cardInfo p {
+
+    color: #8683A1;
+
+}
+
+
+
+
+
+
+
+
+.bottomMenu {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 84px;
+
+    background: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 100;
+}
+
+
+/* верхняя линия */
+.menuLine {
+    width: 100%;
+    height: 1px;
+    background: #EBF0F5;
+}
+
+
+/* 4 кнопки */
+.menuItems {
+    width: 100%;
+    height: 63px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+/* один пункт */
+.menuItem {
+
+    width: 25%;
+    height: 63px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 8px;
+    gap: 8px;
+
+}
+
+
+/* иконка */
+.icon {
+    width: 24px;
+    height: 24px;
+
+    font-size: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    filter: grayscale(1);
+
+}
+
+
+/* текст */
+.menuItem span {
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #94A3B8;
+
+}
+
+
+/* активный пункт */
+.menuItem.active .icon {
+    filter: none;
+}
+
+
+.menuItem.active span {
+    color: #363062;
+}
+
+
+/* нижняя полоска как на iPhone */
+.homeIndicator {
+
+    width: 100px;
+    height: 5px;
+
+    background: #CBD5E1;
+
+    border-radius: 100px;
+
+    margin-top: auto;
+    margin-bottom: 8px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profilePage {
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #363062;
+
+    padding-top: 80px;
+
+    position: relative;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* верх профиля */
+
+.profileTop {
+
+    width: 90%;
+    max-width: 339px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+
+
+.userInfo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+
+.avatar {
+
+    width: 63px;
+    height: 63px;
+
+    border-radius: 50%;
+
+    border: 3px solid white;
+
+    object-fit: cover;
+
+}
+
+
+
+.userText {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+
+.level {
+
+    background: #F99417;
+
+    color: white;
+
+    padding: 4px 8px;
+
+    border-radius: 36px;
+
+    font-size: 12px;
+
+    width: max-content;
+
+}
+
+
+
+.userText h2 {
+
+    color: white;
+
+    font-size: 20px;
+
+    margin: 0;
+
+}
+
+
+
+
+.edit {
+
+    color: white;
+
+    font-size: 22px;
+
+}
+
+
+
+
+
+/* контакты */
+
+
+.contact {
+
+    width: 90%;
+
+    max-width: 339px;
+
+    margin: 24px auto 0;
+
+}
+
+
+
+.contact p {
+
+    color: white;
+
+    font-size: 16px;
+
+    margin: 10px 0;
+
+}
+
+
+
+
+
+/* нижняя белая часть */
+
+
+.settingsBox {
+
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+
+    width: 100%;
+
+    min-height: 443px;
+
+
+    background: white;
+
+
+    border-radius: 28px 28px 0 0;
+
+
+    padding: 24px 5%;
+
+
+    box-sizing: border-box;
+
+
+}
+
+
+
+.settingsBox h4 {
+
+    color: #8683A1;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    margin: 0 0 5px;
+
+}
+
+
+
+
+.settingItem {
+
+
+    width: 100%;
+
+    height: 56px;
+
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+
+    border-bottom: 1px solid #F4F4F5;
+
+
+}
+
+
+
+.settingItem span {
+
+    color: #363062;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+}
+
+
+
+.settingItem b {
+
+    font-size: 25px;
+
+    color: #8683A1;
+
+}
+
+
+
+
+
+.toggle {
+
+    width: 42px;
+    height: 26px;
+
+    background: #CBD5E1;
+
+    border-radius: 20px;
+
+    padding: 3px;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.toggle div {
+
+    width: 20px;
+    height: 20px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    transition: 0.3s;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+/* включено */
+
+.toggle.active {
+
+    background: #363062;
+
+}
+
+
+
+.toggle.active div {
+
+    transform: translateX(8px);
+
+}
+
+
+
+
+.logout {
+
+
+    width: 100%;
+
+    height: 54px;
+
+
+    margin-top: 20px;
+
+
+    background: #363062;
+
+
+    border: none;
+
+
+    border-radius: 8px;
+
+
+    color: white;
+
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+
+}
+
+
+
+
+/* маленькие телефоны */
+
+@media(max-width:380px) {
+
+
+    .profilePage {
+
+        padding-top: 60px;
+
+    }
+
+
+
+    .userText h2 {
+
+        font-size: 18px;
+
+    }
+
+
+
+    .contact p {
+
+        font-size: 14px;
+
+    }
+
+
+
+    .settingsBox {
+
+        min-height: 420px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+.chatPage {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100vh;
+    background: white;
+    margin: auto;
+}
+
+
+.chatHeader {
+    height: 90px;
+    background: #363062;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.chatContainer {
+    padding: 10px;
+}
+
+
+
+.tabs {
+    height: 40px;
+    background: #EDEFFB;
+    border-radius: 18px;
+    display: flex;
+    padding: 4px;
+}
+
+
+.tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    font-size: 14px;
+}
+
+
+.tab.active {
+    background: white;
+    box-shadow: 0 2px 6px #ddd;
+}
+
+
+
+.profiles {
+    display: flex;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+
+.profiles img,
+.addProfile {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+
+.profiles img {
+    object-fit: cover;
+}
+
+
+.addProfile {
+    background: #363062;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+
+
+.searchBox {
+    margin-top: 24px;
+    background: #EBF0F5;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+
+.searchBox input {
+    border: 0;
+    outline: none;
+    background: none;
+    width: 100%;
+}
+
+
+
+.chatList {
+    margin-top: 18px;
+}
+
+
+
+.chatItem {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.avatar {
+    position: relative;
+}
+
+
+.avatar img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+
+.avatar span {
+    width: 12px;
+    height: 12px;
+    background: #27AE60;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border: 2px solid white;
+}
+
+
+.chatText {
+    flex: 1;
+    margin-left: 10px;
+}
+
+
+.chatText h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+.chatText p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #6B7280;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+
+.time strong {
+    background: #363062;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chatPage2 {
+    width: 100%;
+    min-height: 100vh;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans';
+}
+
+
+/* HEADER */
+
+.chatHeader2 {
+    height: 84px;
+    width: 100%;
+    position: absolute;
+    top: 39px;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    gap: 12px;
+    border-bottom: 1px solid #F4F4F5;
+}
+
+
+.back {
+    font-size: 28px;
+}
+
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+
+.userInfo {
+    flex: 1;
+}
+
+
+.userInfo h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+
+.userInfo p {
+    margin: 5px 0;
+    color: #6B7280;
+}
+
+
+.online {
+    width: 10px;
+    height: 10px;
+    background: #27AE60;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+
+
+.endBtn {
+
+    background: #E11D48;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+
+
+/* MESSAGES */
+
+
+.messages {
+
+    position: absolute;
+    top: 147px;
+    left: 18px;
+    width: 339px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+}
+
+
+
+.date {
+
+    width: 71px;
+    padding: 4px 18px;
+    background: #5E5981;
+    color: white;
+    border-radius: 100px;
+
+    font-size: 12px;
+    text-align: center;
+
+    margin: auto;
+}
+
+
+
+.myMessage {
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.adminMessage {
+
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+
+
+.smallAvatar {
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+}
+
+
+
+.bubble {
+
+    padding: 12px;
+    font-size: 14px;
+    line-height: 18px;
+
+}
+
+
+
+.myBubble {
+
+    width: 247px;
+    background: #F4F4F5;
+    border-radius: 16px 16px 0 16px;
+    text-align: right;
+
+}
+
+
+
+.adminBubble {
+
+    width: 191px;
+    background: #4A4572;
+    color: white;
+    border-radius: 0 16px 16px 16px;
+
+}
+
+
+
+.adminBubble b {
+    display: block;
+    margin-bottom: 6px;
+}
+
+
+.adminBubble p {
+    margin: 0 0 6px;
+}
+
+
+
+.lastBubble {
+
+    width: 197px;
+    background: #ECF0F7;
+    border-radius: 16px 16px 0 16px;
+}
+
+
+
+.time {
+
+    color: #9CA3AF;
+    font-size: 12px;
+    margin-top: 6px;
+
+}
+
+
+
+/* INPUT */
+
+.chatInput {
+
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 97px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 18px 10px;
+
+    box-shadow: 0 -2px 10px rgba(156, 163, 175, .06);
+
+}
+
+
+
+.inputBox {
+
+    flex: 1;
+    height: 61px;
+
+    background: #F9FAFB;
+    border-radius: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    color: #D1D5DB;
+    font-size: 14px;
+
+}
+
+
+
+.send {
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: #363062;
+    color: white;
+
+    font-size: 25px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.queuePage {
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #F9FAFB;
+
+    padding: 30px 18px;
+
+    font-family: 'Plus Jakarta Sans';
+
+}
+
+
+
+.queueTitle {
+
+    font-size: 24px;
+    margin-bottom: 25px;
+
+}
+
+
+
+/* кнопка */
+
+.getQueue {
+
+    width: 100%;
+    height: 56px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: #363062;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+/* талон */
+
+
+.ticket {
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 20px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+
+}
+
+
+
+.ticketTop {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.ticketTop h3 {
+
+    margin: 0;
+
+    font-size: 18px;
+
+}
+
+
+
+.number {
+
+    background: #363062;
+
+    color: white;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+
+.line {
+
+    margin: 20px 0;
+
+    border-top: 1px dashed #D1D5DB;
+
+}
+
+
+
+/* информация */
+
+
+.info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+
+.info div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+
+
+.info span {
+
+    color: #6B7280;
+
+}
+
+
+
+.info b {
+
+    color: #111827;
+
+}
+
+
+
+.status {
+
+    margin-top: 25px;
+
+    background: #ECFDF5;
+
+    color: #16A34A;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+}
+
+
+
+/* нижний блок */
+
+
+.queueCard {
+
+    margin-top: 20px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+}
+
+
+.queueCard h3 {
+
+    margin-top: 0;
+
+}
+
+
+.queueCard p {
+
+    color: #6B7280;
+
+}
+
+
+
+.ic-u{
+color: #0f316a;
+}
+
+
+
+
+
+
+
+
+
+
+
+.getPage {
+
+    width: 100%;
+    min-height: 100vh;
+
+    background: #F9FAFB;
+
+    padding: 30px 18px;
+
+    font-family: 'Plus Jakarta Sans';
+
+}
+
+
+
+.getTitle {
+
+    font-size: 24px;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+/* карточка формы */
+
+.formCard {
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 20px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+
+}
+
+
+
+.formCard label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #6B7280;
+
+}
+
+
+
+.selectBox {
+
+    width: 100%;
+
+    height: 55px;
+
+    border: none;
+
+    outline: none;
+
+    background: #F9FAFB;
+
+    border-radius: 16px;
+
+    padding: 0 15px;
+
+    font-size: 15px;
+
+    color: #111827;
+
+}
+
+
+
+
+/* предпросмотр талона */
+
+
+.previewTicket {
+
+    background: #363062;
+
+    color: white;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+}
+
+
+
+.previewTicket h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.previewTicket div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+}
+
+
+
+
+
+/* кнопка */
+
+
+.createTicket {
+
+    width: 100%;
+
+    height: 58px;
+
+    margin-top: 25px;
+
+
+    border: none;
+
+    border-radius: 18px;
+
+
+    background: #363062;
+
+    color: white;
+
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+
+}
+
+.ii1{
+    text-decoration: none;
+}
+
+.forgot1 {
+    text-align: center;
+    color: #c21515;
+    font-weight: 700;
+    cursor: pointer;
+}
+.photo-branch {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+
+/* ========================= */
+/* МАСТЕРА */
+/* ========================= */
+
+.masterBlock2 {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.masterList2 {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.masterCard2 {
+    width: 100%;
+
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    border: 2px solid transparent;
+
+    border-radius: 16px;
+
+    background: #F9FAFB;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* Фото мастера */
+
+.masterCard2 img {
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+
+/* Информация */
+
+.masterInfo2 {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.masterInfo2 h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 16px;
+}
+
+
+.masterInfo2 p {
+    margin: 0;
+
+    color: #8683A1;
+
+    font-size: 13px;
+}
+
+
+/* ВЫБРАННЫЙ МАСТЕР */
+
+.masterCard2.selected {
+    border: 2px solid #363062;
+
+    background: #F4F3FF;
+}
+
+
+/* ========================= */
+/* ВРЕМЯ */
+/* ========================= */
+
+.timeBlock2 {
+    background: white;
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.timeList2 {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.timeBtn2 {
+    height: 50px;
+
+    border: 2px solid transparent;
+
+    border-radius: 14px;
+
+    background: #F9FAFB;
+
+    color: #363062;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.timeBtn2.selected {
+    border: 2px solid #363062;
+
+    background: #F4F3FF;
+
+    color: #363062;
+}
+
+
+/* ========================= */
+/* PREVIEW */
+/* ========================= */
+
+.previewTicket2 {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #363062;
+
+    color: white;
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border-radius: 22px;
+}
+
+
+.previewTicket2 h3 {
+    margin: 0 0 18px;
+
+    font-size: 18px;
+}
+
+
+.previewRow2 {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+.previewRow2:last-child {
+    border-bottom: none;
+}
+
+
+.previewRow2 span {
+    color: #D9D7E8;
+
+    font-size: 14px;
+}
+
+
+.previewRow2 b {
+    color: white;
+
+    font-size: 15px;
+}
+
+
+/* ========================= */
+/* КНОПКИ */
+/* ========================= */
+
+.createTicket2 {
+    width: 100%;
+
+    height: 56px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: #363062;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.backTicket2 {
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 12px;
+
+    border: 2px solid #363062;
+
+    border-radius: 16px;
+
+    background: white;
+
+    color: #363062;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
