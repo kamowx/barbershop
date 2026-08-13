@@ -13,7 +13,7 @@ function Timepage() {
         localStorage.getItem("id");
 
     const userId =
-        JSON.parse(localUser);
+        localUser ? JSON.parse(localUser) : null;
 
 
     // Находим пользователя
@@ -38,7 +38,7 @@ function Timepage() {
         localStorage.getItem("selectedMaster");
 
     const masterId =
-        JSON.parse(localMaster);
+        localMaster ? JSON.parse(localMaster) : null;
 
 
     // =========================
@@ -49,7 +49,7 @@ function Timepage() {
         localStorage.getItem("branchId");
 
     const branchId =
-        JSON.parse(localBranch);
+        localBranch ? JSON.parse(localBranch) : null;
 
 
     // =========================
@@ -240,10 +240,20 @@ function Timepage() {
 
         // Получаем сохранённые времена
 
-        const savedTimes =
-            JSON.parse(
-                localStorage.getItem(savedTimeKey)
-            ) || [];
+        let savedTimes = [];
+
+        try {
+
+            savedTimes =
+                JSON.parse(
+                    localStorage.getItem(savedTimeKey)
+                ) || [];
+
+        } catch {
+
+            savedTimes = [];
+
+        }
 
 
         // Сохраняем в state
@@ -272,12 +282,22 @@ function Timepage() {
         // ПОЛУЧАЕМ ОБЩИЕ ЗАНЯТЫЕ ВРЕМЕНА
         // =========================
 
-        const savedAllTimes =
-            JSON.parse(
-                localStorage.getItem(
-                    `allSelectedTime_${masterId}_${branchId}_${savedDate}`
-                )
-            ) || [];
+        let savedAllTimes = [];
+
+        try {
+
+            savedAllTimes =
+                JSON.parse(
+                    localStorage.getItem(
+                        `allSelectedTime_${masterId}_${branchId}_${savedDate}`
+                    )
+                ) || [];
+
+        } catch {
+
+            savedAllTimes = [];
+
+        }
 
 
         setAllSelectedTimes(
@@ -308,12 +328,22 @@ function Timepage() {
         }
 
 
-        const savedAllTimes =
-            JSON.parse(
-                localStorage.getItem(
-                    `allSelectedTime_${masterId}_${branchId}_${selectedDate}`
-                )
-            ) || [];
+        let savedAllTimes = [];
+
+        try {
+
+            savedAllTimes =
+                JSON.parse(
+                    localStorage.getItem(
+                        `allSelectedTime_${masterId}_${branchId}_${selectedDate}`
+                    )
+                ) || [];
+
+        } catch {
+
+            savedAllTimes = [];
+
+        }
 
 
         setAllSelectedTimes(
@@ -433,6 +463,26 @@ function Timepage() {
 
 
     // =========================
+    // ПРОВЕРКА
+    // ОДНО БРОНИРОВАНИЕ В ДЕНЬ
+    // =========================
+
+    function IsAlreadyBookedToday() {
+
+        if (!selectedDate) {
+            return false;
+        }
+
+
+        return allSelectedTimes.some(
+            (item) =>
+                item.bookingId === bookingId
+        );
+
+    }
+
+
+    // =========================
     // ВЫБОР ВРЕМЕНИ
     // =========================
 
@@ -461,6 +511,29 @@ function Timepage() {
 
 
         // =========================
+        // ПРОВЕРКА
+        // ОДНО БРОНИРОВАНИЕ В ДЕНЬ
+        // =========================
+
+        const alreadyBooked =
+            IsAlreadyBookedToday();
+
+
+        if (
+            alreadyBooked &&
+            !myTime
+        ) {
+
+            alert(
+                "На этот день у вас уже есть бронирование"
+            );
+
+            return;
+
+        }
+
+
+        // =========================
         // ЕСЛИ МОЁ ВРЕМЯ УЖЕ ВЫБРАНО
         // =========================
 
@@ -469,12 +542,12 @@ function Timepage() {
 
             // Удаляем это время
 
-            const newTimes =
+            {/*  const newTimes =
                 selectedTimes.filter(
                     (item) => item !== selected
                 );
 
-
+*/}
             // Сохраняем новый список
 
             setSelectedTimes(
@@ -533,7 +606,6 @@ function Timepage() {
         // =========================
 
         const newTimes = [
-            ...selectedTimes,
             selected
         ];
 
@@ -599,10 +671,20 @@ function Timepage() {
 
         // Получаем времена этой даты
 
-        const savedTimes =
-            JSON.parse(
-                localStorage.getItem(newTimeKey)
-            ) || [];
+        let savedTimes = [];
+
+        try {
+
+            savedTimes =
+                JSON.parse(
+                    localStorage.getItem(newTimeKey)
+                ) || [];
+
+        } catch {
+
+            savedTimes = [];
+
+        }
 
 
         // Показываем их
@@ -635,10 +717,20 @@ function Timepage() {
             `allSelectedTime_${masterId}_${branchId}_${date}`;
 
 
-        const savedAllTimes =
-            JSON.parse(
-                localStorage.getItem(newAllTimeKey)
-            ) || [];
+        let savedAllTimes = [];
+
+        try {
+
+            savedAllTimes =
+                JSON.parse(
+                    localStorage.getItem(newAllTimeKey)
+                ) || [];
+
+        } catch {
+
+            savedAllTimes = [];
+
+        }
 
 
         setAllSelectedTimes(
