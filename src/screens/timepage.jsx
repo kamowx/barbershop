@@ -578,6 +578,8 @@ function Timepage() {
             }
 
 
+
+
             // =========================
             // УДАЛЯЕМ ИЗ ОБЩИХ ЗАНЯТЫХ
             // =========================
@@ -834,6 +836,94 @@ function Timepage() {
 
     }
 
+    //Сбросить
+
+    const remov = () => {
+
+        if (selectedTimes.length === 0) {
+            return;
+        }
+
+
+        // Получаем уже сохранённые времена
+        const savedTimes =
+            JSON.parse(
+                localStorage.getItem(timeKey)
+            ) || [];
+
+
+        // Последнее выбранное время
+        const lastTime =
+            selectedTimes[selectedTimes.length - 1];
+
+
+        // Если последнее время уже сохранено
+        // ничего не удаляем
+        if (savedTimes.includes(lastTime)) {
+
+            alert(
+                "Это время уже сохранено"
+            );
+
+            return;
+        }
+
+
+        // Убираем только последнее
+        // НЕ СОХРАНЁННОЕ время
+        const newTimes =
+            selectedTimes.filter(
+                (item) => item !== lastTime
+            );
+
+
+        setSelectedTimes(
+            newTimes
+        );
+
+
+        // Если остались времена
+        if (newTimes.length > 0) {
+
+            setSelectedTime(
+                newTimes[newTimes.length - 1]
+            );
+
+        } else {
+
+            setSelectedTime("");
+
+        }
+
+
+        // Убираем из общих времён
+        const newAllTimes =
+            allSelectedTimes.filter(
+                (item) =>
+                    !(
+                        item.time === lastTime &&
+                        item.bookingId === bookingId
+                    )
+            );
+
+
+        setAllSelectedTimes(
+            newAllTimes
+        );
+
+
+        // Сохраняем изменения
+        localStorage.setItem(
+            timeKey,
+            JSON.stringify(newTimes)
+        );
+
+        localStorage.setItem(
+            allTimeKey,
+            JSON.stringify(newAllTimes)
+        );
+
+    };
 
     // =========================
     // JSX
@@ -848,6 +938,7 @@ function Timepage() {
                 <h2 className="getTitle2">
                     Выберите дату и время
                 </h2>
+
 
 
                 <p className="getSubtitle2">
@@ -1038,7 +1129,9 @@ function Timepage() {
                         })}
 
                     </div>
-
+                    <h2 onClick={remov}>
+                        Сбросить
+                    </h2>
                 </div>
 
 
