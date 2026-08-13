@@ -13,7 +13,7 @@ function Booking() {
 
     const [branch, setBranch] = useState({});
 
-        useEffect(() => {
+    useEffect(() => {
         const id = localStorage.getItem("id");
 
         if (!id) {
@@ -49,28 +49,202 @@ function Booking() {
 
     }, []);
 
- const Install = (ticketId) => {
 
-    const localTickets = localStorage.getItem("tickets");
+    // =========================
+    // ОТМЕНА ТАЛОНА
+    // =========================
 
-    const tickets = localTickets
-        ? JSON.parse(localTickets)
-        : [];
+    const Install = (ticketId) => {
 
-    // Удаляем только выбранный талон
-    const newTickets = tickets.filter(
-        (ticket) => ticket.id !== ticketId
-    );
+        const localTickets = localStorage.getItem("tickets");
 
-    // Сохраняем оставшиеся талоны
-    localStorage.setItem(
-        "tickets",
-        JSON.stringify(newTickets)
-    );
+        const tickets = localTickets
+            ? JSON.parse(localTickets)
+            : [];
 
-    // Обновляем страницу
-    window.location.reload();
-};
+
+        // Находим талон который отменяем
+        const ticket = tickets.find(
+            (item) => item.id === ticketId
+        );
+
+
+        // Если талон найден
+        if (ticket) {
+
+            // =========================
+            // ВРЕМЯ ЭТОГО ТАЛОНА
+            // =========================
+
+            const ticketTime = ticket.time;
+
+
+            // =========================
+            // ДАТА ЭТОГО ТАЛОНА
+            // =========================
+
+            const ticketDate = ticket.date;
+
+
+            // =========================
+            // BOOKING ID
+            // =========================
+
+            const ticketBookingId = ticket.bookingId;
+
+
+            // =========================
+            // КЛЮЧ ОБЩИХ ЗАНЯТЫХ ВРЕМЁН
+            // =========================
+
+            const allTimeKey =
+                `allSelectedTime_${ticket.masterId}_${ticket.branchId}_${ticketDate}`;
+
+
+            // Получаем все занятые времена
+
+            const localAllTimes =
+                localStorage.getItem(allTimeKey);
+
+
+            const allTimes =
+                localAllTimes
+                    ? JSON.parse(localAllTimes)
+                    : [];
+
+
+            // Удаляем время именно этого пользователя
+
+            const newAllTimes =
+                allTimes.filter(
+                    (item) =>
+                        !(
+                            item.time === ticketTime &&
+                            item.bookingId === ticketBookingId
+                        )
+                );
+
+
+            // Сохраняем новые общие времена
+
+            localStorage.setItem(
+                allTimeKey,
+                JSON.stringify(newAllTimes)
+            );
+
+
+            // =========================
+            // УДАЛЯЕМ ВРЕМЯ ИЗ ВРЕМЁН ПОЛЬЗОВАТЕЛЯ
+            // =========================
+
+            const selectedTimeKey =
+                `selectedTime_${ticketBookingId}_${ticket.masterId}_${ticket.branchId}_${ticketDate}`;
+
+
+            const localSelectedTimes =
+                localStorage.getItem(selectedTimeKey);
+
+
+            const selectedTimes =
+                localSelectedTimes
+                    ? JSON.parse(localSelectedTimes)
+                    : [];
+
+
+            // Удаляем время талона
+
+            const newSelectedTimes =
+                selectedTimes.filter(
+                    (item) => item !== ticketTime
+                );
+
+
+            // Сохраняем
+
+            localStorage.setItem(
+                selectedTimeKey,
+                JSON.stringify(newSelectedTimes)
+            );
+
+
+            // =========================
+            // УДАЛЯЕМ ОБЩЕЕ selectedTime
+            // =========================
+
+            const currentSelectedTime =
+                localStorage.getItem("selectedTime");
+
+
+            if (currentSelectedTime === ticketTime) {
+
+                if (newSelectedTimes.length > 0) {
+
+                    localStorage.setItem(
+                        "selectedTime",
+                        newSelectedTimes[
+                            newSelectedTimes.length - 1
+                        ]
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "selectedTime"
+                    );
+
+                }
+
+            }
+
+
+            // =========================
+            // УДАЛЯЕМ selectedDate
+            // ЕСЛИ ЭТОТ ТАЛОН БОЛЬШЕ НЕ НУЖЕН
+            // =========================
+
+            const currentSelectedDate =
+                localStorage.getItem("selectedDate");
+
+
+            if (currentSelectedDate === ticketDate) {
+
+                if (newSelectedTimes.length === 0) {
+
+                    localStorage.removeItem(
+                        "selectedDate"
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        // =========================
+        // УДАЛЯЕМ ТАЛОН
+        // =========================
+
+        const newTickets =
+            tickets.filter(
+                (ticket) => ticket.id !== ticketId
+            );
+
+
+        // Сохраняем оставшиеся талоны
+
+        localStorage.setItem(
+            "tickets",
+            JSON.stringify(newTickets)
+        );
+
+
+        // Обновляем страницу
+
+        window.location.reload();
+    };
+
+
 
 
     return (
@@ -113,9 +287,10 @@ function Booking() {
 
                 {/*
                     ВСЕ ТАЛОНЫ
-             */}
+                */}
 
                 {tickets.map((ticket) => {
+
 
                     // МАСТЕР ЭТОГО ТАЛОНА
 
@@ -139,7 +314,7 @@ function Booking() {
                     );
 
 
-                    // ЦЕНА ЭТОГО оДного  ТАЛОНА
+                    // ЦЕНА ЭТОГО ОДНОГО ТАЛОНА
 
                     const totalPrice = selectedServiceList.reduce(
                         (sum, item) => sum + item.price,
@@ -174,9 +349,9 @@ function Booking() {
                             <div className="info">
 
 
-                                {/* 
+                                {/*
                                     ДАТА
-                               */}
+                                */}
 
                                 <div>
 
@@ -190,7 +365,7 @@ function Booking() {
                                         >
 
                                             <path
-                                                d="M1.6665 10.0002C1.6665 6.85747 2.64281 4.30981 3.61913 3.3335C5.19047 3.3335 8.33317 3.3335H11.6665C14.8092 3.3335 16.3805 3.3335 17.3569 4.30981C18.3332 5.28612 18.3332 6.85747 18.3332 10.0002V11.6668C18.3332 14.8095 18.3332 16.3809 17.3569 17.3572C16.3805 18.3335 14.8092 18.3335 11.6665 18.3335H8.33317C5.19047 18.3335 3.61913 18.3335 2.64281 17.3572C1.6665 16.3809 1.6665 14.8095 1.6665 11.6668V10.0002Z"
+                                                d="M1.6665 10.0002C1.6665 6.85747 2.64281 4.30981 3.61913 3.3335C5.19047 3.3335 8.33317 3.3335 11.6665 3.3335C14.8092 3.3335 16.3805 3.3335 17.3569 4.30981C18.3332 5.28612 18.3332 6.85747 18.3332 10.0002V11.6668C18.3332 14.8095 18.3332 16.3809 17.3569 17.3572C16.3805 18.3335 14.8092 18.3335 11.6665 18.3335H8.33317C5.19047 18.3335 3.61913 18.3335 2.64281 17.3572C1.6665 16.3809 1.6665 14.8095 1.6665 11.6668V10.0002Z"
                                                 stroke="#363062"
                                                 strokeWidth="1.5"
                                             />
@@ -202,20 +377,20 @@ function Booking() {
                                     </span>
 
                                     <b>
-                                        2026
+                                        {ticket.date || "Не выбрано"}
                                     </b>
 
                                 </div>
 
 
-                                {/* 
+                                {/*
                                     ВРЕМЯ
-                            */}
+                                */}
 
                                 <div>
 
                                     <span>
-                                         Время
+                                        Время
                                     </span>
 
                                     <b>
@@ -225,14 +400,14 @@ function Booking() {
                                 </div>
 
 
-                                {/* 
+                                {/*
                                     МАСТЕР
                                 */}
 
                                 <div>
 
                                     <span>
-                                         Мастер
+                                        Мастер
                                     </span>
 
                                     <b>
@@ -242,14 +417,14 @@ function Booking() {
                                 </div>
 
 
-                                {/* 
+                                {/*
                                     УСЛУГИ
-                               */}
+                                */}
 
                                 <div>
 
                                     <span>
-                                         Услуга
+                                        Услуга
                                     </span>
 
                                     <div>
@@ -275,14 +450,14 @@ function Booking() {
                                 </div>
 
 
-                                {/* 
+                                {/*
                                     МЕСТО
-                                 */}
+                                */}
 
                                 <div>
 
                                     <span>
-                                         Место
+                                        Место
                                     </span>
 
                                     <b>
@@ -292,14 +467,14 @@ function Booking() {
                                 </div>
 
 
-                                {/* 
+                                {/*
                                     ЦЕНА
-                              */}
+                                */}
 
                                 <div>
 
                                     <span>
-                                         Цена
+                                        Цена
                                     </span>
 
                                     <big>
@@ -322,7 +497,11 @@ function Booking() {
                                 Ваша
                             </div>
 
-                            <button onClick={() => Install(ticket.id)} className="logout">
+
+                            <button
+                                onClick={() => Install(ticket.id)}
+                                className="logout"
+                            >
                                 Отменить
                             </button>
 
@@ -337,7 +516,7 @@ function Booking() {
 
                 {/*
                     СЛЕД ИНФОРМАЦИЯ
-            */}
+                */}
 
                 <div className="queueCard">
 

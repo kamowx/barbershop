@@ -1,90 +1,254 @@
 import { useState } from "react";
 import { services } from "../data/services";
 import { masters } from "../data/masters";
+import { users } from "../data/users";
 
 function Servicespage() {
 
-      
-
     const [selectedServices, setSelectedServices] = useState([]);
 
-    const localMaster = localStorage.getItem("selectedMaster");
-    const selectedTime = localStorage.getItem("selectedTime");
-    const masterId = JSON.parse(localMaster);
 
-    const localBranch = localStorage.getItem("branchId");
-    const branchId = JSON.parse(localBranch);
+    // =========================
+    // ПОЛЬЗОВАТЕЛЬ
+    // =========================
 
-    // Находим тот который выбрал мастера
-    const selectedMaster = masters.find(
-        (item) => item.id === masterId
-    );
+    const localUser =
+        localStorage.getItem("id");
 
-    // Получаем услуги выбранного мастера
-    const branchServices = services.filter(
-        (item) => item.masterId === masterId
-    );
+    const userId =
+        JSON.parse(localUser);
+
+    const currentUser =
+        users.find(
+            (user) => user.id === userId
+        );
+
+    const bookingId =
+        currentUser?.bookingId;
 
 
-    // Выбор / отмена ус
+    // =========================
+    // МАСТЕР
+    // =========================
+
+    const localMaster =
+        localStorage.getItem("selectedMaster");
+
+    const masterId =
+        JSON.parse(localMaster);
+
+
+    // =========================
+    // ФИЛИАЛ
+    // =========================
+
+    const localBranch =
+        localStorage.getItem("branchId");
+
+    const branchId =
+        JSON.parse(localBranch);
+
+
+    // =========================
+    // ДАТА
+    // =========================
+
+    const dateKey =
+        `selectedDate_${bookingId}_${masterId}_${branchId}`;
+
+    const selectedDate =
+        localStorage.getItem(dateKey);
+
+
+    // =========================
+    // ВРЕМЯ
+    // =========================
+
+    const timeKey =
+        selectedDate
+            ? `selectedTime_${bookingId}_${masterId}_${branchId}_${selectedDate}`
+            : "";
+
+
+    const selectedTime =
+        timeKey
+            ? localStorage.getItem("selectedTime")
+            : "";
+
+
+    // =========================
+    // МАСТЕР
+    // =========================
+
+    const selectedMaster =
+        masters.find(
+            (item) => item.id === masterId
+        );
+
+
+    // =========================
+    // УСЛУГИ МАСТЕРА
+    // =========================
+
+    const branchServices =
+        services.filter(
+            (item) =>
+                item.masterId === masterId
+        );
+
+
+    // =========================
+    // ВЫБОР УСЛУГИ
+    // =========================
+
     function SelectService(serviceId) {
 
+        // Если услуга уже выбрана
         if (selectedServices.includes(serviceId)) {
 
-            // если выбрал услугу то отмен если нажать
-            setSelectedServices(
-                selectedServices.filter(
-                    (id) => id !== serviceId
-                )
-            );
+            setSelectedServices([]);
 
         } else {
 
-            // Добав услугу
+            // Можно выбрать только одну услугу
             setSelectedServices([
-                ...selectedServices,
                 serviceId
             ]);
 
         }
+
     }
 
 
+    // =========================
+    // СОЗДАНИЕ ТАЛОНА
+    // =========================
+
     function GetTicket() {
 
-        if (selectedServices.length === 0) {
-            alert("Выберите услугу");
+        if (!bookingId) {
+
+            alert(
+                "Пользователь не найден"
+            );
+
             return;
         }
 
-        const localTickets = localStorage.getItem("tickets");
 
-        const tickets = localTickets
-            ? JSON.parse(localTickets)
-            : [];
+        if (!selectedDate) {
+
+            alert(
+                "Дата не выбрана"
+            );
+
+            return;
+        }
+
+
+        if (!selectedTime) {
+
+            alert(
+                "Время не выбрано"
+            );
+
+            return;
+        }
+
+
+        if (selectedServices.length === 0) {
+
+            alert(
+                "Выберите услугу"
+            );
+
+            return;
+        }
+
+
+        // =========================
+        // ПОЛУЧАЕМ СТАРЫЕ ТАЛОНЫ
+        // =========================
+
+        const localTickets =
+            localStorage.getItem("tickets");
+
+
+        const tickets =
+            localTickets
+                ? JSON.parse(localTickets)
+                : [];
+
+
+        // =========================
+        // НОВЫЙ ТАЛОН
+        // =========================
 
         const newTicket = {
-            id: tickets.length + 1,
+
+            id: Date.now(),
+
+            bookingId: bookingId,
+
+            userId: userId,
+
             masterId: masterId,
+
+            branchId: branchId,
+
+            date: selectedDate,
+
             time: selectedTime,
+
             services: selectedServices,
-            branchId: branchId
+
+            status: "Ваша"
         };
 
+
+        // =========================
+        // ДОБАВЛЯЕМ ТАЛОН
+        // =========================
+
         tickets.push(newTicket);
+
+
+        // =========================
+        // СОХРАНЯЕМ
+        // =========================
 
         localStorage.setItem(
             "tickets",
             JSON.stringify(tickets)
         );
 
-        alert("Талон успешно получен!");
 
-        window.location.href = "/booking";
+        alert(
+            "Талон успешно получен!"
+        );
+
+
+        // Очищаем выбранную услугу
+        // чтобы можно было получить
+        // следующий талон
+
+        setSelectedServices([]);
+
+
+        // Переходим в Booking
+
+        window.location.href =
+            "/booking";
+
     }
 
 
+    // =========================
+    // JSX
+    // =========================
+
     return (
+
         <div className="body1">
 
             <div className="homePage fade1">
@@ -93,12 +257,13 @@ function Servicespage() {
                     Выберите услугу
                 </h2>
 
+
                 <p className="getSubtitle2">
                     Доступные услуги мастера
                 </p>
 
 
-                {/* ВЫБРАННЫЙ МАСТЕР */}
+                {/* МАСТЕР */}
 
                 <div className="masterCard2">
 
@@ -107,11 +272,13 @@ function Servicespage() {
                         alt={selectedMaster?.name}
                     />
 
+
                     <div className="masterInfo2">
 
                         <h3>
                             {selectedMaster?.name}
                         </h3>
+
 
                         <p>
                             {selectedMaster?.role}
@@ -130,35 +297,45 @@ function Servicespage() {
                         Выберите услугу
                     </label>
 
+
                     <div className="timeList2">
 
-                        {branchServices.map((item) => (
+                        {branchServices.map(
+                            (item) => (
 
-                            <div
-                                key={item.id}
+                                <div
 
-                                className={
-                                    selectedServices.includes(item.id)
-                                        ? "timeCard2 selected"
-                                        : "timeCard2"
-                                }
+                                    key={item.id}
 
-                                onClick={() =>
-                                    SelectService(item.id)
-                                }
-                            >
+                                    className={
+                                        selectedServices.includes(
+                                            item.id
+                                        )
+                                            ? "timeCard2 selected"
+                                            : "timeCard2"
+                                    }
 
-                                <span>
-                                    {item.name}
-                                </span>
+                                    onClick={() =>
+                                        SelectService(
+                                            item.id
+                                        )
+                                    }
 
-                                <b>
-                                    {item.price} сом
-                                </b>
+                                >
 
-                            </div>
+                                    <span>
+                                        {item.name}
+                                    </span>
 
-                        ))}
+
+                                    <b>
+                                        {item.price} сом
+                                    </b>
+
+                                </div>
+
+                            )
+                        )}
 
                     </div>
 
@@ -180,8 +357,29 @@ function Servicespage() {
                             Мастер
                         </span>
 
+
                         <b>
-                            {selectedMaster?.name || "Не выбран"}
+                            {
+                                selectedMaster?.name ||
+                                "Не выбран"
+                            }
+                        </b>
+
+                    </div>
+
+
+                    <div className="previewRow2">
+
+                        <span>
+                            Дата
+                        </span>
+
+
+                        <b>
+                            {
+                                selectedDate ||
+                                "Не выбрана"
+                            }
                         </b>
 
                     </div>
@@ -193,8 +391,12 @@ function Servicespage() {
                             Время
                         </span>
 
+
                         <b>
-                            {selectedTime || "Не выбран"}
+                            {
+                                selectedTime ||
+                                "Не выбрано"
+                            }
                         </b>
 
                     </div>
@@ -206,24 +408,25 @@ function Servicespage() {
                             Услуга
                         </span>
 
+
                         <b>
 
-                            {selectedServices.length > 0
+                            {
+                                selectedServices.length > 0
 
-                                ? selectedServices
-                                    .map((id) =>
-                                        branchServices.find(
-                                            (item) => item.id === id
-                                        )?.name
-                                    )
-                                    .join(", ")
+                                    ? branchServices.find(
+                                        (item) =>
+                                            item.id ===
+                                            selectedServices[0]
+                                    )?.name
 
-                                : "Не выбрано"
+                                    : "Не выбрано"
                             }
 
                         </b>
 
                     </div>
+
 
                     <div className="previewRow2">
 
@@ -231,14 +434,21 @@ function Servicespage() {
                             Общая Сумма :
                         </span>
 
-                        <b>
-                            {selectedServices.reduce((total, id) => {
-                                const service = services.find(
-                                    (item) => item.id === id
-                                );
 
-                                return total + (service?.price || 0);
-                            }, 0)} сом
+                        <b>
+
+                            {
+                                selectedServices.length > 0
+
+                                    ? branchServices.find(
+                                        (item) =>
+                                            item.id ===
+                                            selectedServices[0]
+                                    )?.price
+
+                                    : 0
+                            } сом
+
                         </b>
 
                     </div>
@@ -252,23 +462,34 @@ function Servicespage() {
                     className="createTicket2"
                     onClick={GetTicket}
                 >
-                    Выбрать услугу
+
+                    Получить талон
+
                 </button>
 
 
                 <button
                     className="backTicket2"
+
                     onClick={() => {
-                        window.location.href = "/timepage";
+
+                        window.location.href =
+                            "/timepage";
+
                     }}
+
                 >
+
                     Назад
+
                 </button>
 
             </div>
 
         </div>
+
     );
+
 }
 
 export default Servicespage;

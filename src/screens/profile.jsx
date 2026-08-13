@@ -33,7 +33,7 @@ function Profile() {
         localStorage.removeItem("id");
         localStorage.removeItem("branchId");
         localStorage.removeItem("selectedMaster");
-        localStorage.removeItem("selectedTime");
+
         localStorage.removeItem("selectedServices");
         localStorage.removeItem("tickets");
 
