@@ -125,7 +125,7 @@ function Home() {
 
                     <input
                         type="text"
-                        placeholder="Search barber's, haircut service"
+                        placeholder="Искать барберов, услуги и стрижков"
                     />
 
                     <button>
